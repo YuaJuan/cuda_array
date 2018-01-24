@@ -24,9 +24,11 @@ void writeExcel(float time);
 void writeExcelLine();
 void mallocHost(char filepath[], int imgsize,float *kernel_HOST,float *total_HOST);
 void mallocHostAll(char filepath[], int imgsize,float *kernel_HOST,float *total_HOST);
+void mallocHostDefault(char filepath[], int datasize, float *memcpyDH_hostDefault, float *kernel_hostDefault, float *total_hostDefault);
 void putStringToCsv(char str[],char filename[]);
-
+void do_smooth(float **data, int imgsize);
 int putString2Csv(char str[],char filename[],int mode);
+void readData2D(char filePath[], float **data);
 
 
 

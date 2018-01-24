@@ -92,3 +92,37 @@ void putStringToCsv(char str[],char filename[]){
 	
     fclose(fp);
 }
+
+
+void readData2D(char filePath[], float **data){
+	int x = 0;
+	int y = 0;
+	float val = 0;
+	char delimes[] = ",";
+	char *split_result = NULL;
+	char strLine[1024];
+	FILE *fp;
+	if ((fp = fopen(filePath, "r")) == NULL){
+		printf("read %s file failed.\n", filePath);
+		exit(-1);
+	}
+
+	while (!feof(fp)){
+		fgets(strLine, 1024, fp);
+
+		split_result = strtok(strLine, delimes);
+		split_result = strtok(NULL, delimes);
+		if (split_result == NULL)break;
+		x = atoi(split_result);
+
+		split_result = strtok(NULL, delimes);
+		y = atoi(split_result);
+
+		split_result = strtok(NULL, delimes);
+		val = atof(split_result);
+
+		data[x][y] = val;
+		//printf("%.2f", val);
+	}
+	fclose(fp);
+}
